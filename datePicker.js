@@ -357,7 +357,8 @@ class DatePicker extends Component {
                     style={[
                       styles.datePickerCon,
                       { height: this.state.animatedHeight },
-                      customStyles.datePickerCon
+                      customStyles.datePickerCon,
+                      darkTheme ? { backgroundColor: 'lightgrey' } : {}
                     ]}
                   >
                     <View

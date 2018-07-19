@@ -1,7 +1,8 @@
 
 # react-native-navybits-date-time-picker
 This project is a modified version of [react-native-datePicker](https://github.com/xgfe/react-native-datepicker).
-It solves the need to set a TimeInterval on android using the native picker [`MaterialDateTimePicker`](https://github.com/wdullaer/MaterialDateTimePicker)
+It solves the need to set a *MinuteInterval* on android using the native picker [`MaterialDateTimePicker`](https://github.com/wdullaer/MaterialDateTimePicker)
+ 
 
 ## Getting started
 

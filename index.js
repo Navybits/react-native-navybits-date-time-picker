@@ -1,7 +1,5 @@
 import _ from "lodash";
-import moment from "moment";
 import React, { Component } from "react";
-import { Platform, Text, TouchableOpacity, View } from "react-native";
 
 import DatePicker from "./datePicker";
 
