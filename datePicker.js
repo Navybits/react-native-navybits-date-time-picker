@@ -456,7 +456,7 @@ class DatePicker extends Component {
   }
 }
 
-DateTimePickerIOS.defaultProps = {
+DatePicker.defaultProps = {
   mode: "date",
   date: new Date(),
   // component height: 216(DatePickerIOS) + 1(borderTop) + 42(marginTop), IOS only
@@ -491,7 +491,7 @@ DateTimePickerIOS.defaultProps = {
   accentColor:'blue'
 };
 
-DateTimePickerIOS.propTypes = {
+DatePicker.propTypes = {
   mode: PropTypes.oneOf(["date", "datetime", "time"]),
   date: PropTypes.oneOfType([
     PropTypes.string,
