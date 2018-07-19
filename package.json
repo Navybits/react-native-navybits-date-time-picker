@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-navybits-date-time-picker",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,9 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "homepage": "https://github.com/HananeAlSamrout/react-native-navybits-date-time-picker",
+  "author": "Hanane AL SAMROUT",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2",
     "react-native-windows": "0.41.0-rc.1"
