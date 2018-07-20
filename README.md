@@ -27,7 +27,8 @@ you don't need to do anything
 
 ## Example 
 Please refer to example.js
-
+![android](https://github.com/Navybits/react-native-navybits-date-time-picker/img/nbPicker_android.gif)
+![ios](https://github.com/Navybits/react-native-navybits-date-time-picker/img/NBPicker.gif)
 
  
 
