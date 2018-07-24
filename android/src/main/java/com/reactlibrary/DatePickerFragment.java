@@ -99,7 +99,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         if(minDate!=null){
             Calendar cal1 = Calendar.getInstance();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             try {
                 cal1.setTime(sdf.parse(minDate));
             }
@@ -113,7 +113,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         if(maxDate!=null) {
             Calendar cal1 = Calendar.getInstance();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             try {
                 cal1.setTime(sdf.parse(maxDate));
             }

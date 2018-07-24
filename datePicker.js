@@ -229,7 +229,7 @@ class DatePicker extends Component {
     else
       RCTDateTimePicker.showTimePicker(options, function(year, month, day) {
         // console.log({ year, month, day });
-        let newDate = new Date(year, month, day);
+        let newDate = new Date(year, month-1, day);
         //  console.log({ newDate });
         if (year && month) _this._handleDatePicked(newDate);
         else _this._handleDatePicked(null);

@@ -139,11 +139,9 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
         if (enableMinutes == true && enableSeconds == true)
             tpd = TimePickerDialog.newInstance(TimePickerFragment.this, hour, minute, second, is24Hour);
-        else if (enableMinutes == true)
+        else 
             tpd = TimePickerDialog.newInstance(TimePickerFragment.this, hour, minute, is24Hour);
-        else
-            tpd = TimePickerDialog.newInstance(TimePickerFragment.this, hour, is24Hour);
-
+     
         tpd.setTitle(title);
         tpd.setOkText(okText);
         tpd.setCancelText(cancelText);
