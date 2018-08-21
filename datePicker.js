@@ -209,10 +209,38 @@ class DatePicker extends Component {
       options.hour = moment(date).hour();
       options.minute = moment(date).minute();
       options.second = moment(date).second();
+
+      if (options.minTime) {
+        options = {
+          ...options,
+          minTime: moment(options.minTime).format('HH:mm:ss')
+        }
+      }
+
+      if (options.maxTime) {
+        options = {
+          ...options,
+          maxTime: moment(options.maxTime).format('HH:mm:ss')
+        }
+      }
     } else {
       options.year = moment(date).get("year");
       options.month = moment(date).get("month");
       options.day = moment(date).get("date");
+
+      if (options.minDate) {
+        options = {
+          ...options,
+          minDate: moment(options.minDate).format('DD-MM-YYYY')
+        }
+      }
+
+      if (options.maxDate) {
+        options = {
+          ...options,
+          maxDate: moment(options.maxDate).format('DD-MM-YYYY')
+        }
+      }
     }
     // console.log({ options });
     if (options.mode == "time")
