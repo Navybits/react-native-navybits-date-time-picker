@@ -14,10 +14,12 @@ import {
   Text,
   Switch,
   Slider,
-  View
+  View,
+  Dimensions
 } from "react-native";
 import TimePicker from "./datePicker";
 import moment from "moment";
+let { width, height } = Dimensions.get("window");
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +40,38 @@ export default class App extends Component {
     };
     this._handleDatePicked = this._handleDatePicked.bind(this);
     this._hideDateTimePicker = this._hideDateTimePicker.bind(this);
+  }
+  renderDate(date) {
+    let year = moment(date).format("YYYY");
+    let month = moment(date).format("MMM");
+    let day = moment(date).format("DD");
+    return (
+      <View style={styles.dateWrapper}>
+        <View
+          style={[
+            styles.dateElementView,
+            {
+              marginRight: 10
+            }
+          ]}
+        >
+          <Text style={styles.dateElement}>{month}</Text>
+        </View>
+        <View
+          style={[
+            styles.dateElementView,
+            {
+              marginRight: 10
+            }
+          ]}
+        >
+          <Text style={styles.dateElement}>{day}</Text>
+        </View>
+        <View style={styles.dateElementView}>
+          <Text style={styles.dateElement}>{year}</Text>
+        </View>
+      </View>
+    );
   }
   _handleDatePicked(date) {
     console.log("selectedDate", date);
@@ -67,6 +101,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <TimePicker
+          renderDate={date => this.renderDate(date)}
           accentColor={this.state.accentColor}
           okColor={this.state.okColor}
           cancelColor={this.state.cancelColor}
@@ -279,5 +314,27 @@ const styles = StyleSheet.create({
   centerView: {
     flex: 1,
     alignItems: "center"
+  },
+  dateElementView: {
+    flex: 1,
+    height: 50,
+    alignItems: "flex-start",
+    paddingLeft: 15,
+    paddingRight: 15,
+    justifyContent: "center",
+    backgroundColor: "#f2f2f2",
+    borderWidth: 1,
+    borderColor: "lightgrey"
+  },
+  dateElement: {
+    color: "navy"
+  },
+  dateWrapper: {
+    flexDirection: "row",
+    alignSelf: "stretch",
+    alignItems: "center",
+    width: width - 40,
+    height: 50,
+    justifyContent: "space-between"
   }
 });

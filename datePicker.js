@@ -1,21 +1,20 @@
-import React, { Component } from "react";
+import _ from "lodash";
+import moment from "moment";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
 import {
-  View,
-  Text,
-  Image,
-  Modal,
-  TouchableHighlight,
+  Animated,
   DatePickerIOS,
+  Keyboard,
+  Modal,
   NativeModules,
   Platform,
-  Animated,
-  Keyboard
+  Text,
+  TouchableHighlight,
+  View
 } from "react-native";
-var RCTDateTimePicker = NativeModules.DateTimePicker;
-
 import styles from "./styles";
-import moment from "moment";
+var RCTDateTimePicker = NativeModules.DateTimePicker;
 
 const FORMATS = {
   date: "YYYY-MM-DD",
@@ -23,7 +22,6 @@ const FORMATS = {
   time24: "HH:mm",
   time: "hh:mm a"
 };
-import _ from "lodash";
 const SUPPORTED_ORIENTATIONS = [
   "portrait",
   "portrait-upside-down",
@@ -213,15 +211,15 @@ class DatePicker extends Component {
       if (options.minTime) {
         options = {
           ...options,
-          minTime: moment(options.minTime).format('HH:mm:ss')
-        }
+          minTime: moment(options.minTime).format("HH:mm:ss")
+        };
       }
 
       if (options.maxTime) {
         options = {
           ...options,
-          maxTime: moment(options.maxTime).format('HH:mm:ss')
-        }
+          maxTime: moment(options.maxTime).format("HH:mm:ss")
+        };
       }
     } else {
       options.year = moment(date).get("year");
@@ -231,15 +229,15 @@ class DatePicker extends Component {
       if (options.minDate) {
         options = {
           ...options,
-          minDate: moment(options.minDate).format('DD-MM-YYYY')
-        }
+          minDate: moment(options.minDate).format("DD-MM-YYYY")
+        };
       }
 
       if (options.maxDate) {
         options = {
           ...options,
-          maxDate: moment(options.maxDate).format('DD-MM-YYYY')
-        }
+          maxDate: moment(options.maxDate).format("DD-MM-YYYY")
+        };
       }
     }
     // console.log({ options });
@@ -257,7 +255,7 @@ class DatePicker extends Component {
     else
       RCTDateTimePicker.showTimePicker(options, function(year, month, day) {
         // console.log({ year, month, day });
-        let newDate = new Date(year, month-1, day);
+        let newDate = new Date(year, month - 1, day);
         //  console.log({ newDate });
         if (year && month) _this._handleDatePicked(newDate);
         else _this._handleDatePicked(null);
@@ -270,7 +268,7 @@ class DatePicker extends Component {
       let displayedDate = this.getDate(date);
       this.setState({
         originalDate: date,
-        date: displayedDate,
+        date: displayedDate
       });
       onConfirm && onConfirm(date);
     } else {
@@ -358,12 +356,13 @@ class DatePicker extends Component {
         testID={testID}
       >
         <View style={[styles.dateTouchBody, customStyles.dateTouchBody]}>
-          {!this.props.hideText ? (
+          {this.props.renderDate ? (
+            this.props.renderDate(this.props.date)
+          ) : !this.props.hideText ? (
             <View style={dateInputStyle}>{this.getTitleElement()}</View>
           ) : (
             <View />
           )}
-
           <Modal
             transparent={true}
             animationType="none"
@@ -386,7 +385,7 @@ class DatePicker extends Component {
                       styles.datePickerCon,
                       { height: this.state.animatedHeight },
                       customStyles.datePickerCon,
-                      darkTheme ? { backgroundColor: 'lightgrey' } : {}
+                      darkTheme ? { backgroundColor: "lightgrey" } : {}
                     ]}
                   >
                     <View
@@ -411,7 +410,7 @@ class DatePicker extends Component {
                             styles.btnTextText,
                             styles.btnTextCancel,
                             customStyles.btnTextCancel,
-                            cancelColor ? { color: cancelColor } : {},
+                            cancelColor ? { color: cancelColor } : {}
                           ]}
                         >
                           {cancelText}
@@ -419,7 +418,9 @@ class DatePicker extends Component {
                       </TouchableComponent>
                       {title ? (
                         <View style={styles.titleWrapper}>
-                          <Text style={styles.title}>{title}</Text>
+                          <Text style={[styles.title, customStyles.titleStyle]}>
+                            {title}
+                          </Text>
                         </View>
                       ) : null}
                       <TouchableComponent
@@ -437,8 +438,7 @@ class DatePicker extends Component {
                           style={[
                             styles.btnTextText,
                             customStyles.btnTextConfirm,
-                            okColor ? { color: okColor } : {},
-
+                            okColor ? { color: okColor } : {}
                           ]}
                         >
                           {okText}
@@ -515,9 +515,9 @@ DatePicker.defaultProps = {
   darkTheme: false,
   enableSeconds: false,
 
-  cancelColor:'red',
-  okColor:'green',
-  accentColor:'blue'
+  cancelColor: "red",
+  okColor: "green",
+  accentColor: "blue"
 };
 
 DatePicker.propTypes = {
@@ -561,13 +561,14 @@ DatePicker.propTypes = {
   onOpenModal: PropTypes.func, //ios
   onCloseModal: PropTypes.func, //ios
   onPressMask: PropTypes.func, //ios
+  renderDate: PropTypes.func, //all
 
   dismissOnPause: PropTypes.bool, //android
   vibrate: PropTypes.bool, //android
   darkTheme: PropTypes.bool, //android
   enableSeconds: PropTypes.bool, // time picker
   enableMinutes: PropTypes.bool, // time picker
-  
+
   showYearPickerFirst: PropTypes.bool, //android date picker
 
   scrollOrientation: PropTypes.oneOf(["vertical", "horizontal"]), //android date picker
