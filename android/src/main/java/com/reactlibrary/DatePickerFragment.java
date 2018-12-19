@@ -134,6 +134,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         dpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialogInterface) {
+                callback.invoke(null, null, null);
                 Log.d("TimePicker", "Dialog was cancelled");
             }
         });
@@ -159,7 +160,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int monthString = i1+1;
         //second < 10 ? "0" + second : "" + second;
         String date = "You picked the following date: " + yearString + "h" + monthString + "m" + dayString + "s";
-        callback.invoke(yearString, monthString,dayString);
+        callback.invoke(yearString, monthString, dayString);
         getActivity().getFragmentManager().popBackStackImmediate();
         getDialog().dismiss();
         // getActivity().finish();
