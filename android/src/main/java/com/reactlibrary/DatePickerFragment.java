@@ -3,7 +3,6 @@ package com.reactlibrary;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.compat.R.bool;
 
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
