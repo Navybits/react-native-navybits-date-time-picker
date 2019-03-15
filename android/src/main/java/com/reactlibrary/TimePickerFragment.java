@@ -204,6 +204,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialogInterface) {
+                callback.invoke(null, null, null);
                 Log.d("TimePicker", "Dialog was cancelled");
             }
         });
