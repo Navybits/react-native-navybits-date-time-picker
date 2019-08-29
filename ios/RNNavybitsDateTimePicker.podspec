@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   RNNavybitsDateTimePicker
                    DESC
-  s.homepage     = ""
+  s.homepage     = "https://github.com/Navybits/react-native-navybits-date-time-picker"
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author             = { "author" => "author@domain.cn" }
