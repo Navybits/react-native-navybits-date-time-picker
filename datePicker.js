@@ -506,8 +506,8 @@ DatePicker.defaultProps = {
   placeholder: "",
   TouchableComponent: TouchableHighlight,
 
-  hoursInterval: 1,
-  minutesInterval: 10,
+  hourInterval: 1,
+  minuteInterval: 10,
   secondInterval: 10,
 
   is24Hour: false,
