@@ -133,14 +133,18 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         dpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialogInterface) {
-                Log.d("TimePicker", "Dialog was cancelled");
-            }
+                getActivity().getFragmentManager().popBackStackImmediate();
+                getDialog().dismiss();
+          }
         });
         dpd.show(getFragmentManager(), "Timepickerdialog");
 
         return null;
     }
-
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+     }
     @Override
     public void onResume() {
         super.onResume();
